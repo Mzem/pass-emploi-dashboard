@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notifications Pass Emploi</title>
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔔</text></svg>"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">🔔</span>
+        <h1>Notifications Pass Emploi</h1>
+      </div>
+      <div class="status" id="status" data-state="connecting">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-label">Connexion…</span>
+      </div>
+    </header>
+
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Catégories"></nav>
+
+    <div class="toolbar">
+      <div class="env-switch" id="env-switch" role="group" aria-label="Environnement"></div>
+      <p class="category-description" id="category-description"></p>
+      <button class="btn btn-ghost" id="toggle-hook" type="button" aria-expanded="false">
+        🔗 Webhook
+      </button>
+    </div>
+
+    <section class="hook-panel" id="hook-panel" hidden>
+      <div class="hook-row">
+        <label for="hook-url">URL du webhook <span id="hook-target"></span></label>
+        <div class="hook-input">
+          <input id="hook-url" type="text" readonly spellcheck="false" />
+          <button class="btn" id="copy-hook" type="button">Copier</button>
+        </div>
+      </div>
+      <p class="hook-help">
+        Compatible avec les webhooks entrants Mattermost / Slack :
+        <code>POST</code> en JSON avec <code>text</code> (markdown, tableaux inclus),
+        <code>username</code>, <code>icon_url</code> et/ou <code>attachments</code>.
+        Tout autre JSON est accepté et affiché brut.
+      </p>
+      <pre class="hook-curl"><code id="hook-curl"></code></pre>
+    </section>
+
+    <main class="feed" id="feed" aria-live="polite" aria-busy="true"></main>
+
+    <div class="feed-footer">
+      <button class="btn" id="load-more" type="button" hidden>Charger plus</button>
+    </div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

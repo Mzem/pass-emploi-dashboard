@@ -1,0 +1,35 @@
+{
+  "name": "pass-emploi-dashboard",
+  "version": "1.0.0",
+  "description": "Tableau de bord des notifications Pass Emploi : reçoit les webhooks (Jobs, Elastic, Scalingo, CVE) à la place de Mattermost et les affiche par catégorie et environnement",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": "22.14.0"
+  },
+  "packageManager": "yarn@4.9.2",
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.build.json",
+    "start": "node --no-warnings=ExperimentalWarning dist/server.js",
+    "dev": "NODE_OPTIONS=--no-warnings=ExperimentalWarning tsx watch src/server.ts",
+    "test": "node --import tsx --no-warnings=ExperimentalWarning --test test/*.test.ts",
+    "lint": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "marked": "^18.0.14",
+    "node-emoji": "^2.2.0",
+    "pg": "^8.23.0",
+    "pg-connection-string": "^2.9.0",
+    "sanitize-html": "^2.17.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.14.0",
+    "@types/pg": "^8.23.1",
+    "@types/sanitize-html": "^2.16.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "pass-emploi-dashboard",
+  "description": "Tableau de bord des notifications Pass Emploi (Jobs, Elastic, Scalingo, CVE)",
+  "addons": [
+    {
+      "plan": "postgresql:postgresql-starter-512"
+    }
+  ],
+  "env": {
+    "RETENTION_DAYS": {
+      "description": "Durée de conservation des notifications, en jours",
+      "value": "30"
+    },
+    "DASHBOARD_USER": {
+      "description": "Identifiant Basic Auth du tableau de bord",
+      "value": "pass-emploi"
+    },
+    "DASHBOARD_PASSWORD": {
+      "description": "Mot de passe Basic Auth du tableau de bord",
+      "generator": "secret"
+    },
+    "HOOK_TOKEN_JOBS_PROD": { "generator": "secret" },
+    "HOOK_TOKEN_JOBS_STAGING": { "generator": "secret" },
+    "HOOK_TOKEN_ELASTIC_PROD": { "generator": "secret" },
+    "HOOK_TOKEN_ELASTIC_STAGING": { "generator": "secret" },
+    "HOOK_TOKEN_SCALINGO_PROD": { "generator": "secret" },
+    "HOOK_TOKEN_SCALINGO_STAGING": { "generator": "secret" },
+    "HOOK_TOKEN_CVE_PROD": { "generator": "secret" },
+    "HOOK_TOKEN_CVE_STAGING": { "generator": "secret" }
+  }
+}
